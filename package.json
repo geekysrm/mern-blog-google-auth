@@ -4,7 +4,8 @@
   "description": "MERN stack blog app with google auth",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "author": "Soumya Ranjan Mohanty",
   "license": "MIT",
@@ -12,5 +13,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.3.12"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
   }
 }
