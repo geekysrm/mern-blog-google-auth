@@ -1,9 +1,36 @@
+const passport = require("passport");
 const express = require("express");
-const router = express.Router();
+const app = express();
 
-// Route: /api/auth/test
-// Access: Public
-// Description: Tests auth route
-router.get("/test", (req, res) => res.json({ msg: "Auth working!" }));
+module.exports = app => {
+  // app.get('/auth/google', passport.authenticate('google', {
+  //     scope: ['profile', 'email']
+  // })
+  // );
+  app.get(
+    "/auth/google",
+    passport.authenticate("google", {
+      scope: [
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email"
+      ]
+    })
+  );
 
-module.exports = router;
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/profile");
+    }
+  );
+
+  app.get("/api/logout", (req, res) => {
+    req.logout();
+    res.redirect("/login");
+  });
+
+  app.get("/api/current_user", (req, res) => {
+    res.send(req.user);
+  });
+};
