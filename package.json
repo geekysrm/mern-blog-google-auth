@@ -19,7 +19,10 @@
     "express": "^4.16.4",
     "mongoose": "^5.3.12",
     "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
+    "passport-google-oauth20": "^1.0.0",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.6"
