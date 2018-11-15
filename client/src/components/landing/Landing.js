@@ -25,7 +25,7 @@ export default function Landing() {
                       />
                     </div>
                     <p class="btn-text">
-                      <b>Sign in with google</b>
+                      <b>Log in with Google</b>
                     </p>
                   </div>
                 </a>
