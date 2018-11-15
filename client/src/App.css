@@ -1,6 +1,6 @@
 body {
   margin-bottom: 100px !important;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 img {
@@ -13,6 +13,9 @@ img {
   background-size: cover;
   background-position: center;
   height: 100vh;
+
+  margin-top: -24px;
+  margin-bottom: -50px;
 }
 
 .landing-inner {

@@ -14,7 +14,7 @@ const PostSchema = new Schema({
   name: {
     type: String
   },
-  avatar: {
+  photo: {
     type: String
   },
   date: {

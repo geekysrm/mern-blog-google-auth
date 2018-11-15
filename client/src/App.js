@@ -7,6 +7,10 @@ import Login from "./components/login/Login";
 import Profile from "./components/profile/Profile";
 import Landing from "./components/landing/Landing";
 import Footer from "./components/footer/Footer";
+import Navbar from "./components/navbar/Navbar";
+import PostForm from "./components/posts/PostForm";
+import Posts from "./components/posts/Posts";
+import NotFoundPage from "./components/not-found-page/NotFoundPage";
 
 import "./App.css";
 
@@ -16,12 +20,14 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            {/*<Navbar />*/}
+            <Navbar />
             <Route exact path="/" component={Landing} />
             <div className="container">
               <Route exact path="/login" component={Login} />
               {/*<Route exact path="/not-found" component={NotFound} />*/}
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/create" component={PostForm} />
+              <Route exact path="/posts" component={Posts} />
             </div>
             <Footer />
           </div>

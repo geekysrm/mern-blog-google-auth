@@ -1,35 +1,47 @@
 import React from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+
+import { setCurrentUser } from "../../actions/authActions";
+
+import "./Profile.css";
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = { profile: [] };
   }
 
-  componentDidMount() {
-    axios
-      .get("/api/current_user")
-      .then(res => {
-        if (!res.data) window.location.assign("/");
-        this.setState({ profile: res.data });
-        console.log(this.state.profile);
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
+  async componentDidMount() {
+    await this.props.setCurrentUser();
+    // if (!this.props.auth.isAuthenticated) {
+    //   this.props.history.push("/");
+    // }
   }
   render() {
-    return (
-      <div>
-        <ul>
-          <li>Name:{this.state.profile.name}</li>
-          <li>email:{this.state.profile.email}</li>
-          <img src={this.state.profile.photo} alt="" />
-        </ul>
-        <a href="/api/logout">Logout</a>
-      </div>
-    );
+    if (this.props.auth.isAuthenticated) {
+      return (
+        <div className="jumbotron">
+          <h1 className="display-4">Howdy, {this.props.auth.user.name}!</h1>
+          <p className="lead">We got these details about you.</p>
+          <hr className="my-4" />
+          <center>
+            <ul>
+              <li>Your Name: {this.props.auth.user.name}</li>
+              <li>Your Email: {this.props.auth.user.email}</li>
+              <img className="photo" src={this.props.auth.user.photo} alt="" />
+            </ul>
+          </center>
+        </div>
+      );
+    } else return <div>Loading...</div>;
   }
 }
 
-export default Profile;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { setCurrentUser }
+)(Profile);

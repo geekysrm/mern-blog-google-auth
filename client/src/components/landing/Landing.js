@@ -16,15 +16,15 @@ export default function Landing() {
               <hr />
               <div className="google-btn-container">
                 <a href="/auth/google">
-                  <div class="google-btn">
-                    <div class="google-icon-wrapper">
+                  <div className="google-btn">
+                    <div className="google-icon-wrapper">
                       <img
-                        class="google-icon"
+                        className="google-icon"
                         src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                         alt="signin"
                       />
                     </div>
-                    <p class="btn-text">
+                    <p className="btn-text">
                       <b>Log in with Google</b>
                     </p>
                   </div>

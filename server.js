@@ -2,9 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const bodyParser = require("body-parser");
 
 const app = express();
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 const auth = require("./routes/api/auth");
 const posts = require("./routes/api/posts");
 
@@ -38,6 +40,7 @@ require("./config/passport");
 //app.use("/api/posts", posts);
 
 require("./routes/api/auth.js")(app);
+require("./routes/api/posts.js")(app);
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`App running on port ${port}`));

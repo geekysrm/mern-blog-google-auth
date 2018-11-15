@@ -1,0 +1,29 @@
+.card-img-top {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50% !important;
+  margin-right: 5px;
+  margin-left: -3spx;
+}
+
+.username {
+  font-size: 75%;
+  text-transform: uppercase;
+}
+.date {
+  margin-left: 35px;
+  font-size: 65%;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
