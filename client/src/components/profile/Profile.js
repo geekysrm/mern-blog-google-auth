@@ -4,9 +4,13 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = { profile: [] };
+  }
+
+  componentDidMount() {
     axios
       .get("/api/current_user")
       .then(res => {
+        if (!res.data) window.location.assign("/");
         this.setState({ profile: res.data });
         console.log(this.state.profile);
       })
