@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
+const path = require('path')
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
