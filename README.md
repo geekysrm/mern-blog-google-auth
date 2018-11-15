@@ -2,7 +2,7 @@
 
 A blog app made using MERN stack with authenticates user based on their Google login.
 
-### Live here:
+### Live here: https://devblogger.herokuapp.com/
 
 ## Getting Started
 
