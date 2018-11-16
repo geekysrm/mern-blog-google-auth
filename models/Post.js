@@ -11,8 +11,9 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
-    type: String
+  title: {
+    type: String,
+    required: true
   },
   photo: {
     type: String

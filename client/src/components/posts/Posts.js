@@ -12,7 +12,8 @@ export class Posts extends Component {
     await this.props.getPosts();
   }
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.post !== prevProps.post) {
+    if (this.props.post.posts.length === 0) this.props.getPosts();
+    if (this.props.post.posts.length !== prevProps.post.posts.length) {
       this.setState({ posts: this.props.post.posts });
     }
   }
@@ -30,21 +31,25 @@ export class Posts extends Component {
                 <div className="card" style={{ width: "18rem" }}>
                   <img
                     className="card-img-top"
-                    src="https://via.placeholder.com/150"
+                    src={item.post.photo}
                     alt="Card cap"
                   />
                   <div className="card-body">
-                    <h5 className="card-title">*Card Title*</h5>
-                    <p className="card-text">{item.text}</p>
+                    <h5 className="card-title">{item.post.title}</h5>
+                    <p className="card-text">{item.post.text}</p>
                     <hr />
                     <img
                       className="avatar"
-                      src="https://via.placeholder.com/150"
+                      src={item.user.photo}
                       alt="User avatar"
                     />
-                    <span className="username text-muted">*name of user*</span>
+                    <span className="username text-muted">
+                      {item.user.name}
+                    </span>
                     <br />
-                    <i className="date text-muted">12 May</i>
+                    <i className="date text-muted">
+                      {item.post.date.split("T")[0]}
+                    </i>
                   </div>
                 </div>
                 <br />

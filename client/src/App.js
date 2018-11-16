@@ -27,7 +27,7 @@ class App extends Component {
               {/*<Route exact path="/not-found" component={NotFound} />*/}
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/create" component={PostForm} />
-              <Route exact path="/posts" component={Posts} />
+              <Route exact path="/all-posts" component={Posts} />
             </div>
             <Footer />
           </div>

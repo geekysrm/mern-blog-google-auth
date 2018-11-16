@@ -6,17 +6,13 @@ class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ""
+      text: "",
+      title: "",
+      photo: ""
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.errors) {
-      this.setState({ errors: newProps.errors });
-    }
   }
 
   onSubmit(e) {
@@ -26,11 +22,13 @@ class PostForm extends Component {
 
     const newPost = {
       text: this.state.text,
+      title: this.state.title,
+      photo: this.state.photo,
       user
     };
 
     this.props.addPost(newPost);
-    this.setState({ text: "" });
+    this.setState({ text: "", title: "", photo: "" });
   }
 
   onChange(e) {
@@ -45,10 +43,43 @@ class PostForm extends Component {
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
+                <input
+                  value={this.state.title}
+                  onChange={this.onChange}
+                  className="form-control form-control-sm"
+                  type="text"
+                  placeholder="Title of your post"
+                  style={{ marginBottom: 5 }}
+                  name="title"
+                />
+                <input
+                  value={this.state.photo}
+                  onChange={this.onChange}
+                  className="form-control form-control-sm"
+                  type="text"
+                  placeholder="URL of image"
+                  style={{ marginBottom: 5 }}
+                  name="photo"
+                />
+                <small
+                  style={{
+                    marginBottom: 5,
+                    fontSize: "11px",
+                    fontStyle: "italic"
+                  }}
+                  className="form-text text-muted"
+                >
+                  Upload your image on{" "}
+                  <a href="https://postimages.org/" target="_blank">
+                    PostImages
+                  </a>
+                  &nbsp;and paste link here
+                </small>
+
                 <textarea
                   value={this.state.text}
                   onChange={this.onChange}
-                  placeholder="Create a post"
+                  placeholder="Write something"
                   className="form-control"
                   rows="3"
                   name="text"
