@@ -7,3 +7,23 @@
   width: 150px;
   height: 150px;
 }
+.profile-container {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  border-radius: 10px;
+}
+
+.profile-item + .profile-item {
+  margin-left: 50px;
+}
+.list-group-item {
+  background: #ebf2ff;
+}
+.profile-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

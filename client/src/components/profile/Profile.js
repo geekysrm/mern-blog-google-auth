@@ -25,11 +25,29 @@ class Profile extends React.Component {
           <p className="lead">We got these details about you.</p>
           <hr className="my-4" />
           <center>
-            <ul>
-              <li>Your Name: {this.props.auth.user.name}</li>
-              <li>Your Email: {this.props.auth.user.email}</li>
-              <img className="photo" src={this.props.auth.user.photo} alt="" />
-            </ul>
+            <div className="profile-container">
+              <div className="profile-item">
+                <ul className="list-group">
+                  <li className="list-group-item">
+                    <div>
+                      <b>Name</b>: {this.props.auth.user.name}
+                    </div>
+                  </li>
+                  <li className="list-group-item">
+                    <div>
+                      <b>Email</b>: {this.props.auth.user.name}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div className="profile-item">
+                <img
+                  className="photo"
+                  src={this.props.auth.user.photo}
+                  alt=""
+                />
+              </div>
+            </div>
           </center>
         </div>
       );

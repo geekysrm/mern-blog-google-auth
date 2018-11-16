@@ -26,4 +26,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #e9ecef;
+  padding-top: 30px;
 }

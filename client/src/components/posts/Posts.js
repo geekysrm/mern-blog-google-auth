@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { getPosts } from "../../actions/postActions";
+import { setCurrentUser } from "../../actions/authActions";
 import RemoveDuplicates from "../../utilities/RemoveDuplicates";
 
 import "./Posts.css";
@@ -11,6 +12,7 @@ export class Posts extends Component {
     posts: []
   };
   async componentDidMount() {
+    await this.props.setCurrentUser();
     await this.props.getPosts();
   }
   componentDidUpdate(prevProps, prevState) {
@@ -32,8 +34,8 @@ export class Posts extends Component {
         <div className="card-container">
           {this.state.posts.length !== 0 ? (
             this.state.posts.map(item => (
-              <React.Fragment>
-                <div className="card" style={{ width: "18rem" }}>
+              <React.Fragment key={item.post._id}>
+                <div className="card" style={{ width: "25rem" }}>
                   <img
                     className="card-img-top"
                     src={item.post.photo}
@@ -69,10 +71,11 @@ export class Posts extends Component {
   }
 }
 const mapStateToProps = state => ({
+  auth: state.auth,
   post: state.post
 });
 
 export default connect(
   mapStateToProps,
-  { getPosts }
+  { getPosts, setCurrentUser }
 )(Posts);

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/postActions";
+import { setCurrentUser } from "../../actions/authActions";
 
 class PostForm extends Component {
   constructor(props) {
@@ -14,7 +15,9 @@ class PostForm extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
+  async componentDidMount() {
+    await this.props.setCurrentUser();
+  }
   onSubmit(e) {
     e.preventDefault();
 
@@ -103,5 +106,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addPost }
+  { addPost, setCurrentUser }
 )(PostForm);
