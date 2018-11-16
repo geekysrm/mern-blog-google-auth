@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import { getPosts } from "../../actions/postActions";
+import RemoveDuplicates from "../../utilities/RemoveDuplicates";
 
 import "./Posts.css";
 
@@ -13,8 +15,11 @@ export class Posts extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (this.props.post.posts.length === 0) this.props.getPosts();
-    if (this.props.post.posts.length !== prevProps.post.posts.length) {
-      this.setState({ posts: this.props.post.posts });
+    if (this.props.post !== prevProps.post) {
+      console.log(RemoveDuplicates(this.props.post.posts));
+      this.setState({
+        posts: RemoveDuplicates(this.props.post.posts)
+      });
     }
   }
   render() {
