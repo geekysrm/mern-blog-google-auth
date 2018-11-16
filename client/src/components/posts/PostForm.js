@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import { addPost } from "../../actions/postActions";
 import { setCurrentUser } from "../../actions/authActions";
+import CheckImageUrl from "../../utilities/CheckImageUrl";
 
 class PostForm extends Component {
   constructor(props) {
@@ -9,7 +11,9 @@ class PostForm extends Component {
     this.state = {
       text: "",
       title: "",
-      photo: ""
+      photo: "",
+      error: "",
+      postSuccess: false
     };
 
     this.onChange = this.onChange.bind(this);
@@ -18,20 +22,39 @@ class PostForm extends Component {
   async componentDidMount() {
     await this.props.setCurrentUser();
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.post !== prevProps.post) {
+      this.setState({
+        postSuccess: this.props.post.postSuccess
+      });
+    }
+  }
   onSubmit(e) {
     e.preventDefault();
+    console.log(this.state);
 
-    const { user } = this.props.auth;
+    if (
+      this.state.text === "" ||
+      this.state.title === "" ||
+      this.state.photo === ""
+    ) {
+      this.setState({ error: "Please enter all fields" });
+    } else if (!CheckImageUrl(this.state.photo)) {
+      this.setState({ error: "Please enter a valid image URL" });
+    } else {
+      this.setState({ error: "" });
+      const { user } = this.props.auth;
 
-    const newPost = {
-      text: this.state.text,
-      title: this.state.title,
-      photo: this.state.photo,
-      user
-    };
+      const newPost = {
+        text: this.state.text,
+        title: this.state.title,
+        photo: this.state.photo,
+        user
+      };
 
-    this.props.addPost(newPost);
-    this.setState({ text: "", title: "", photo: "" });
+      this.props.addPost(newPost);
+      this.setState({ text: "", title: "", photo: "" });
+    }
   }
 
   onChange(e) {
@@ -41,6 +64,16 @@ class PostForm extends Component {
   render() {
     return (
       <div className="post-form mb-3">
+        {this.state.error && (
+          <div className="alert alert-danger" role="alert">
+            {this.state.error}
+          </div>
+        )}
+        {this.state.postSuccess && (
+          <div className="alert alert-success" role="alert">
+            Posted Successfully
+          </div>
+        )}
         <div className="card card-info">
           <div className="card-header bg-info text-white">Say Something...</div>
           <div className="card-body">
@@ -76,7 +109,7 @@ class PostForm extends Component {
                   <a href="https://postimages.org/" target="_blank">
                     PostImages
                   </a>
-                  &nbsp;and paste link here
+                  &nbsp;and paste link here with http:// or https://
                 </small>
 
                 <textarea
@@ -101,7 +134,7 @@ class PostForm extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  post: state.post
 });
 
 export default connect(

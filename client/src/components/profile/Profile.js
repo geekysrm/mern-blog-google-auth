@@ -35,7 +35,7 @@ class Profile extends React.Component {
                   </li>
                   <li className="list-group-item">
                     <div>
-                      <b>Email</b>: {this.props.auth.user.name}
+                      <b>Email</b>: {this.props.auth.user.email}
                     </div>
                   </li>
                 </ul>

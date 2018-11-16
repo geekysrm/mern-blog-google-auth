@@ -18,7 +18,6 @@ export const getPosts = () => dispatch => {
   axios
     .get("/posts/")
     .then(res => {
-      console.log("Action", res.data);
       dispatch({
         type: GET_POSTS,
         payload: res.data
