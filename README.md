@@ -1,8 +1,20 @@
-# MERN Blog (Google Auth)
+<p align="center">
+  
+<h1 align="center"> MERN Blog <br> (Google Auth) </h1>
 
-A blog app made using MERN stack with authenticates user based on their Google login.
+<p align="center"><i>A blog app made using MERN stack with authenticates user based on their Google login.</i><p align="center">
 
-### Live here: https://devblogger.herokuapp.com/
+</p>
+
+<h2 align="center">Live here: https://devblogger.herokuapp.com/ </h2>
+
+![alt text](https://i.postimg.cc/V6qr3nGV/Capture.png "Screenshot of DevBlogger")
+
+
+##  Using it
+This repo is now a **Github Template!!** :sparkles:
+
+Click the green **`Use this template`** button to generate a copy of this repo in your account.
 
 ## Getting Started
 
