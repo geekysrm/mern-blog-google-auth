@@ -45,6 +45,11 @@ class Landing extends React.Component {
                     </a>
                   </div>
                 )}
+                <div className="google-btn-container">
+                  <a href="https://coffee.soumya.dev/" target="_blank">
+                    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
