@@ -39,3 +39,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.coffee-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.coffee-btn-container a {
+  width: 180px;
+  margin-top: 25px;
+}
+
+.coffee-btn-container img {
+  width: 180px;
+  margin-top: 25px;
+  border-radius: 0;
+}
